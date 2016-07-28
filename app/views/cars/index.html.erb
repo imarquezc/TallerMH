@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container">
+  <div class="jumbotron">
+    <p><h1>Vehículos</h1></p>
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Patente</th>
+        <th>Cliente</th>
+        <th>Marca</th>
+        <th>Modelo</th>
+        <th>Kilometraje</th>
+        <th>Color</th>
+        <th>Tipo</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @cars.each do |car| %>
+        <tr>
+          <td><%= car.patente %></td>
+          <td><%= link_to car.client.full_name, client_path(car.client) %></td>
+          <td><%= car.marca %></td>
+          <td><%= car.modelo %></td>
+          <td><%= car.kilometraje %></td>
+          <td><%= car.color %></td>
+          <td><%= car.tipo %></td>
+          <td><%= link_to 'Ver', car %></td>
+          <td><%= link_to 'Editar', edit_car_path(car) %></td>
+          <td><%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, car, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<br>
+

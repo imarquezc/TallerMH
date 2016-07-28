@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container">
+  <div class="jumbotron">
+    <div class="container">
+    <div class="col-md-8 col-xs-8">
+      <p><h1>Clientes</h1></p>
+    </div>
+    <div class="col-md-4 col-xs-4">
+      <br><br>
+      <%= link_to 'Nuevo Cliente', new_client_path, class: "btn btn-lg btn-danger pull-right", id:"nuevocliente" %>
+    </div>
+    </div>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Direccion</th>
+        <th>Comuna</th>
+        <th>Telefono</th>
+        <th>Celular</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @clients.each do |client| %>
+        <tr class='clickable-row' data-href=<%= client_path(client) %>>
+          <td><%= client.full_name %></td>
+          <td><%= client.direccion %></td>
+          <td><%= client.comuna %></td>
+          <td><%= client.telefono %></td>
+          <td><%= client.celular %></td>
+          <td><%= link_to 'Ver', client %></td>
+          <td><%= link_to 'Editar', edit_client_path(client) %></td>
+          <td><%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, client, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<br>
+

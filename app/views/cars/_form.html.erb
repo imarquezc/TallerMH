@@ -1,0 +1,70 @@
+<%= form_for(@car) do |f| %>
+  <% if @car.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@car.errors.count, "error") %> prohibited this car from being saved:</h2>
+
+      <ul>
+      <% @car.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :patente %><br>
+    <%= f.text_field :patente %>
+  </div>
+  <div class="field">
+    <%= f.label :marca %><br>
+
+<select name="car[marca]" id="car_marca">
+<% Car.select("marca").uniq.each do |m| %>
+<option value=<%=m.marca%>><%=m.marca%></option>
+<% end %>
+</select>
+    <input type="text" id="nuevamarca"/>
+    <input type="button" id="agregar" value="Agregar"/>
+  </div>
+
+  <div class="field">
+    <%= f.label :modelo %><br>
+    <%= f.text_field :modelo %>
+  </div>
+  <div class="field">
+    <%= f.label :tipo %><br>
+    <%= f.select :tipo, ['Auto', 'Moto', 'Camioneta','Bus', 'Camión', 'Otro']%>
+  </div>
+  <div class="field">
+    <%= f.label :kilometraje %><br>
+    <%= f.text_field :kilometraje %>
+  </div>
+  <div class="field">
+    <%= f.label :color %><br>
+    <%= f.text_field :color %>
+  </div>
+  <div class="field">
+    <%= f.label :comentarios %><br>
+    <%= f.text_area :comentarios %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :client, :value => @client %><br>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+
+
+<script>
+$(document).ready(function(){
+
+    $("#agregar").click(function(){
+    $("#car_marca").prepend(0,'<option value="' + $("#nuevamarca").val() + '">' + $("#nuevamarca").val() + '</option>');
+    $('#car_marca').prop('selectedIndex', 0);
+    });
+
+});
+</script>

@@ -1,0 +1,44 @@
+<%= form_for(@compra) do |f| %>
+  <% if @compra.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@compra.errors.count, "error") %> prohibited this compra from being saved:</h2>
+
+      <ul>
+      <% @compra.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="field">
+    <%= f.label :producto %><br>
+    <select name="compra[producto]" id="car_producto">
+
+    <% if Item.all == [] %>
+      <option value='nil' disabled>No hay productos</option>
+    <% else %>
+      <% Item.all.each do |i| %>
+        <option value=<%=i.identificador%>><%=i.identificador.to_s + "-" + i.nombre + "-" + i.marca%></option>
+      <% end %>
+    <%end%>
+    </select>
+  </div>
+
+  <div class="field">
+    <%= f.label :precio_de_compra %><br>
+    <%= f.number_field :p_compra %>
+  </div>
+  <div class="field">
+    <%= f.label :precio_de_venta %><br>
+    <%= f.number_field :p_venta %>
+  </div>
+  <div class="field">
+    <%= f.label :cantidad %><br>
+    <%= f.number_field :cantidad %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
