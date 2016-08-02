@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'pages#home'
   resources :compras
   resources :items
   get '/clients/:id/new_car' => 'cars#new', as: 'new_car'

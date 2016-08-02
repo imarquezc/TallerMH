@@ -1,41 +1,51 @@
 <p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="col-md-5">
 
-<p>
-  <strong>Patente:</strong>
-  <%= @car.patente %>
-</p>
+    <h1>Datos Vehículo:</h1>
+    <p>
+      <strong>Patente:</strong>
+      <%= @car.patente %>
+    </p>
 
-<p>
-  <strong>Marca:</strong>
-  <%= @car.marca %>
-</p>
+    <p>
+      <strong>Marca:</strong>
+      <%= @car.marca %>
+    </p>
 
-<p>
-  <strong>Modelo:</strong>
-  <%= @car.modelo %>
-</p>
+    <p>
+      <strong>Modelo:</strong>
+      <%= @car.modelo %>
+    </p>
 
-<p>
-  <strong>Kilometraje:</strong>
-  <%= @car.kilometraje %>
-</p>
+    <p>
+      <strong>Kilometraje:</strong>
+      <%= @car.kilometraje %>
+    </p>
 
-<p>
-  <strong>Color:</strong>
-  <%= @car.color %>
-</p>
+    <p>
+      <strong>Color:</strong>
+      <%= @car.color %>
+    </p>
 
-<p>
-  <strong>Comentarios:</strong>
-  <%= @car.comentarios %>
-</p>
-<% if @car.client.present?%>
-  <p>
-    <strong>Cliente:</strong>
-    <%= link_to @car.client.full_name, client_path(@car.client) %>
-  </p>
-<%end%>
+    <p>
+      <strong>Comentarios:</strong>
+      <%= @car.comentarios %>
+    </p>
+    <% if @car.client.present?%>
+      <p>
+        <strong>Cliente:</strong>
+        <%= link_to @car.client.full_name, client_path(@car.client) %>
+      </p>
+    <%end%>
+    </div>
 
+    <div class="col-md-7">
 
+      <h1>Mantenciones:</h1>
+
+    </div>
+
+</div>
 <%= link_to 'Edit', edit_car_path(@car) %> |
 <%= link_to 'Back', cars_path %>
