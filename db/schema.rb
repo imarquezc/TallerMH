@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160802211949) do
+ActiveRecord::Schema.define(version: 20160818203501) do
 
   create_table "cars", force: :cascade do |t|
     t.string   "marca"
@@ -40,6 +40,13 @@ ActiveRecord::Schema.define(version: 20160802211949) do
     t.string   "mail"
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.text     "detalle"
+    t.integer  "precio"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "compras", force: :cascade do |t|
     t.integer  "producto"
     t.integer  "p_compra"
@@ -60,5 +67,17 @@ ActiveRecord::Schema.define(version: 20160802211949) do
     t.string   "fabricante"
     t.string   "modelo"
   end
+
+  create_table "works", force: :cascade do |t|
+    t.text     "motivo"
+    t.string   "tipo"
+    t.integer  "kilometraje"
+    t.integer  "estanque"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "car_id"
+  end
+
+  add_index "works", ["car_id"], name: "index_works_on_car_id"
 
 end

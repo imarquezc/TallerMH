@@ -4,6 +4,7 @@ class Car < ActiveRecord::Base
     validates :kilometraje, presence: true
     validates :patente, length: { is: 6 }, presence: true
     belongs_to :client
+    has_many :works
     before_save :upper
 
 

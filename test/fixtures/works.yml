@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  motivo: MyText
+  tipo: MyString
+  kilometraje: 
+  estanque: 
+
+two:
+  motivo: MyText
+  tipo: MyString
+  kilometraje: 
+  estanque: 

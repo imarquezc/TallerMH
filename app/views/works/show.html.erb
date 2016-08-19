@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Motivo:</strong>
+  <%= @work.motivo %>
+</p>
+
+<p>
+  <strong>Tipo:</strong>
+  <%= @work.tipo %>
+</p>
+
+<p>
+  <strong>Kilometraje:</strong>
+  <%= @work.kilometraje %>
+</p>
+
+<p>
+  <strong>Estanque:</strong>
+  <%= @work.estanque %>%
+</p>
+
+<%= link_to 'Edit', edit_work_path(@work) %> |
+<%= link_to 'Back', works_path %>

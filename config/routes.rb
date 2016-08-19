@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+  resources :comments
   root 'pages#home'
   resources :compras
   resources :items
   get '/clients/:id/new_car' => 'cars#new', as: 'new_car'
+  get '/cars/:id/new_work' => 'works#new', as: 'new_work'
   resources :cars
+  resources :works
   resources :clients
 
   # The priority is based upon order of creation: first created -> highest priority.
