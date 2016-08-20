@@ -13,6 +13,28 @@ def full_name
     self.nombre + " " + self.apellido
 end
 
+def contacto
+    if self.celular
+        self.celular
+    elsif self.telefono
+        self.telefono
+    else
+        "Sin datos"
+    end   
+end
+
+def direccion_full
+    if self.direccion and self.comuna
+        self.direccion + ", " + self.comuna
+    elsif self.direccion
+        self.direccion
+    elsif self.comuna
+        self.comuna
+    else
+        "Sin datos"
+    end
+end
+
 def self.search(search)
   if search and search != ""
     a = where('apellido LIKE ?',"%#{search}%") # + where('rut LIKE ?',"%#{search}%")

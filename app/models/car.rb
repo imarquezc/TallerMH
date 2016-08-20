@@ -16,6 +16,10 @@ def self.search(search)
   end
 end
 
+def full_name
+    self.marca + " " + self.modelo
+end
+
 private
 
 def upper

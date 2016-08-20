@@ -10,6 +10,8 @@ class WorksController < ApplicationController
   # GET /works/1
   # GET /works/1.json
   def show
+    @car = @work.car
+    @client = @car.client
   end
 
   # GET /works/new

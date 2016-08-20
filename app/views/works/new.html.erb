@@ -1,5 +1,11 @@
-<h1>Nuevo Trabajo para el vehículo <%=Car.find(@car).patente%></h1>
+<div class="container">
+    <div class="col-md-8 col-xs-12">
 
-<%= render 'form' %>
+        <h1>Nuevo Trabajo para el vehículo <%=Car.find(@car).patente%></h1>
 
-<%= link_to 'Back', works_path %>
+        <%= render 'form' %>
+
+        <%= link_to 'Volver', works_path %>
+
+    </div>
+</div>

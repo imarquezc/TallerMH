@@ -1,24 +1,82 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Motivo:</strong>
-  <%= @work.motivo %>
-</p>
+<div class="container">
+    <div class="col-md-offset-2 col-md-8 col-md-offet-1 col-xs-12" id="workshow">
 
-<p>
-  <strong>Tipo:</strong>
-  <%= @work.tipo %>
-</p>
+    <center><h1>Orden de Trabajo <%= @work.id %></h1></center>
 
-<p>
-  <strong>Kilometraje:</strong>
-  <%= @work.kilometraje %>
-</p>
+    <br>
+    <div class="row">
+        <div class="col-md-6">
+            <h5 id="box"><strong>SR(A):</strong> <%=@client.full_name%></h5>
+            <h5 id="box"><strong>RUT:</strong> <%=@client.full_name%></h5>
+            <h5 id="box"><strong>MAIL:</strong> <%=@client.mail%></h5>
+            <h5 id="box"><strong>FONO:</strong> <%=number_to_phone(@client.contacto)%></h5>
 
-<p>
-  <strong>Estanque:</strong>
-  <%= @work.estanque %>%
-</p>
+        </div>
+        <div class="col-md-6">
+            <h5 id="box"><strong>VEHICULO:</strong> <%=@car.full_name%></h5>
+            <h5 id="box"><strong>PATENTE:</strong> <%=@car.patente%></h5>
+            <h5 id="box"><strong>AÑO:</strong> [Agregar año!!]</h5>
+            <h5 id="box"><strong>COLOR:</strong> <%=@car.color%></h5>
+        </div>
+        <div class="col-md-12 no-margin">
+            <h5 id="box"><strong>DIRECCION:</strong> <%=@client.direccion_full%></h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <h5 id="box"><strong>ESTANQUE:</strong>
+            <center><div id="estanque"></div></center></h5>
+        </div>
+        <div class="col-md-6">
+            <h5 id="box"><strong>FECHA:</strong> <%= @work.dd_mm_aaaa %> - <%= @work.hh_mm %></h5>
+            <h5 id="box"><strong>KILOMETRAJE:</strong> <%= number_with_delimiter(@work.kilometraje, :delimiter => '.') %>km</h5>
+            <h5 id="box"><strong>TIPO DE TRABAJO:</strong> <%=@work.tipo%></h5>
 
-<%= link_to 'Edit', edit_work_path(@work) %> |
-<%= link_to 'Back', works_path %>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h5><strong>MOTIVO:</strong></h5>
+            <p id="motivo"><%= @work.motivo %></p>
+        </div>
+    </div>
+
+    <%= link_to 'Edit', edit_work_path(@work) %> |
+    <%= link_to 'Back', :back %>
+    </div>
+</div>
+
+  <script>
+ 
+  $( document ).ready(function() {
+    var value = <%= @work.estanque %>;
+    var color;
+    if(value < 3) {
+        color = "red";
+    }
+    else if (value < 6) {
+        color = "yellow";
+    }
+    else{
+        color = "green";
+    }
+    $(".rs-range-color").css("background-color", color) ;
+  });
+ 
+  </script>
+
+<script type="text/javascript">
+    $("#estanque").roundSlider({
+        radius: 90,
+        circleShape: "half-top",
+        sliderType: "min-range",
+        showTooltip: true,
+        value: <%= @work.estanque%>,
+        readOnly: true,
+        max:12,
+        width:20,
+    });
+    $(".rs-tooltip-text").text(<%= @work.estanque * 100/12 %> + "%");
+
+</script>

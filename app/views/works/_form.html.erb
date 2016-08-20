@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :tipo %><br>
-    <%= f.text_field :tipo %>
+    <%= f.select :tipo, ['Mantención', 'Consulta', 'Otro'] %>
   </div>
   <div class="field">
     <%= f.label :kilometraje %><br>
@@ -43,12 +43,12 @@
         sliderType: "min-range",
         showTooltip: true,
         value: 0,
-        max:100,
-        width:15,
+        max:12,
+        width:20,
         change: function (e) {
             var value = e.value, color;
-            if (value < 30) color = "red";
-            else if (value < 60) color = "yellow";
+            if (value < 3) color = "red";
+            else if (value < 6) color = "yellow";
             else color = "green";
 
             $(".rs-range-color").css("background-color", color) ;
