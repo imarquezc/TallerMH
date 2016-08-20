@@ -1,5 +1,6 @@
 class WorksController < ApplicationController
   before_action :set_work, only: [:show, :edit, :update, :destroy]
+  layout false, only: [:show]
 
   # GET /works
   # GET /works.json
@@ -13,6 +14,7 @@ class WorksController < ApplicationController
     @car = @work.car
     @client = @car.client
   end
+
 
   # GET /works/new
   def new
