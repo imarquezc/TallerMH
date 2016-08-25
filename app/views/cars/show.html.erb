@@ -2,20 +2,20 @@
 <div class="container">
   <div class="col-md-5">
 
-    <h1>Datos Vehículo:</h1>
+    <h1><span id="box" class="glyphicon glyphicon-road"></span> Datos Vehículo</h1>
     <p>
       <strong>Patente:</strong>
       <%= @car.patente %>
     </p>
 
     <p>
-      <strong>Marca:</strong>
-      <%= @car.marca %>
+      <strong>Modelo:</strong>
+      <%= @car.full_name %>
     </p>
 
     <p>
-      <strong>Modelo:</strong>
-      <%= @car.modelo %>
+      <strong>Año:</strong>
+      <%= @car.año %>
     </p>
 
     <p>
@@ -38,11 +38,14 @@
         <%= link_to @car.client.full_name, client_path(@car.client) %>
       </p>
     <%end%>
+
+    <%= link_to 'Actualizar Datos', edit_car_path(@car), class: "btn btn-lg btn-primary", id:"nuevocliente" %>
+    <%= link_to 'Volver', :back, class: "btn btn-lg btn-danger", id:"nuevocliente"%>
     </div>
 
     <div class="col-md-7">
 
-      <h1>Mantenciones:</h1>
+      <h1><span id="box" class="glyphicon glyphicon-wrench"></span> Trabajos del Vehículo</h1>
         <table class="table table-striped">
           <thead>
             <tr>
@@ -60,7 +63,7 @@
                 <td><%= work.kilometraje %></td>
                 <td><%= work.tipo %></td>
                 <td><%= link_to 'Detalles', work %></td>
-                <td><%= link_to 'Editar', edit_car_path(work) %></td>
+                <td><%= link_to 'Editar', edit_work_path(work) %></td>
                 <td><%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, work, method: :delete, data: { confirm: 'Are you sure?' } %></td>
               </tr>
             <% end %>
@@ -71,5 +74,3 @@
     </div>
 
 </div>
-<%= link_to 'Edit', edit_car_path(@car) %> |
-<%= link_to 'Back', cars_path %>

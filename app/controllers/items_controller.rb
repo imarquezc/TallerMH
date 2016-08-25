@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
+    @items = Item.search(params[:search])
   end
 
   # GET /items/1
@@ -15,10 +15,12 @@ class ItemsController < ApplicationController
   # GET /items/new
   def new
     @item = Item.new
+    @boton = "Crear"
   end
 
   # GET /items/1/edit
   def edit
+    @boton = "Actualizar"
   end
 
   # POST /items
@@ -69,6 +71,6 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:nombre, :identificador, :descripcion, :stock, :marca)
+      params.require(:item).permit(:nombre, :identificador, :descripcion, :stock, :marca, :fabricante, :modelo)
     end
 end

@@ -16,10 +16,12 @@ class CarsController < ApplicationController
   def new
     @car = Car.new
     @client = params[:id]
+    @boton = "Crear Vehículo"
   end
 
   # GET /cars/1/edit
   def edit
+    @boton = "Actualizar"
   end
 
   # POST /cars
@@ -72,7 +74,7 @@ class CarsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def car_params
-      params.require(:car).permit(:marca, :modelo, :kilometraje, :color, :comentarios, :patente, :tipo)
+      params.require(:car).permit(:marca, :modelo, :kilometraje, :color, :comentarios, :patente, :tipo, :año)
     end
 
     

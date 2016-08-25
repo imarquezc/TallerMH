@@ -4,6 +4,8 @@ class Client < ActiveRecord::Base
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
     validates :mail, format: { with: VALID_EMAIL_REGEX }, :allow_blank => true
     validate :validate_mail_telefono_or_celular
+    validates :rut, rut: true
+
 
 def get_start_day
     self.created_at.day.to_s + "-" + self.created_at.month.to_s + "-" + self.created_at.year.to_s
@@ -14,9 +16,9 @@ def full_name
 end
 
 def contacto
-    if self.celular
+    if self.celular?
         self.celular
-    elsif self.telefono
+    elsif self.telefono?
         self.telefono
     else
         "Sin datos"
@@ -24,11 +26,11 @@ def contacto
 end
 
 def direccion_full
-    if self.direccion and self.comuna
+    if self.direccion? and self.comuna?
         self.direccion + ", " + self.comuna
-    elsif self.direccion
+    elsif self.direccion?
         self.direccion
-    elsif self.comuna
+    elsif self.comuna?
         self.comuna
     else
         "Sin datos"
@@ -37,7 +39,7 @@ end
 
 def self.search(search)
   if search and search != ""
-    a = where('apellido LIKE ?',"%#{search}%") # + where('rut LIKE ?',"%#{search}%")
+    a = where('apellido LIKE ?',"%#{search}%") + where('rut LIKE ?',"%#{search}%")
     a.uniq
   else
     self.all

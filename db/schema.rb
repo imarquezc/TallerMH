@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160818203501) do
+ActiveRecord::Schema.define(version: 20160824185615) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20160818203501) do
     t.integer  "client_id"
     t.string   "patente"
     t.string   "tipo"
+    t.integer  "año"
   end
 
   add_index "cars", ["client_id"], name: "index_cars_on_client_id", using: :btree
@@ -41,6 +42,7 @@ ActiveRecord::Schema.define(version: 20160818203501) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "mail"
+    t.string   "rut"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -48,7 +50,10 @@ ActiveRecord::Schema.define(version: 20160818203501) do
     t.integer  "precio"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "work_id"
   end
+
+  add_index "comments", ["work_id"], name: "index_comments_on_work_id", using: :btree
 
   create_table "compras", force: :cascade do |t|
     t.integer  "producto"
@@ -84,5 +89,6 @@ ActiveRecord::Schema.define(version: 20160818203501) do
   add_index "works", ["car_id"], name: "index_works_on_car_id", using: :btree
 
   add_foreign_key "cars", "clients"
+  add_foreign_key "comments", "works"
   add_foreign_key "works", "cars"
 end

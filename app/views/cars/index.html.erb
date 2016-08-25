@@ -18,8 +18,8 @@
       <tr>
         <th>Patente</th>
         <th>Cliente</th>
-        <th>Marca</th>
         <th>Modelo</th>
+        <th>Año</th>
         <th>Kilometraje</th>
         <th>Color</th>
         <th>Tipo</th>
@@ -32,8 +32,8 @@
         <tr>
           <td><%= car.patente %></td>
           <td><%= link_to car.client.full_name, client_path(car.client) %></td>
-          <td><%= car.marca %></td>
-          <td><%= car.modelo %></td>
+          <td><%= car.full_name %></td>
+          <td><%= car.año %></td>
           <td><%= car.kilometraje %></td>
           <td><%= car.color %></td>
           <td><%= car.tipo %></td>

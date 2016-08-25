@@ -1,6 +1,5 @@
 class WorksController < ApplicationController
   before_action :set_work, only: [:show, :edit, :update, :destroy]
-  layout false, only: [:show]
 
   # GET /works
   # GET /works.json
@@ -13,6 +12,22 @@ class WorksController < ApplicationController
   def show
     @car = @work.car
     @client = @car.client
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render :pdf => "my_pdf_name.pdf",
+                :disposition => "inline",
+                :template => "works/pdf.html.erb",
+                :layout => "pdf"
+      end 
+      #{
+      #  html = render_to_string(:layout => false, :template => "works/pdf.html.erb")
+      #  kit = PDFKit.new(html, :page_size => "A4")
+      #  kit.stylesheets << "#{Rails.root}/app/assets/stylesheets/pdf.css"
+      #  send_data(kit.to_pdf, :filename => "some_name.pdf", :type => 'application/pdf')
+      #  return
+      #}
+      end
   end
 
 
@@ -33,8 +48,11 @@ class WorksController < ApplicationController
     @car = Car.find(params.require(:work).permit(:car)["car"])
     @car.works << @work
 
+    @car.kilometraje = @work.kilometraje
+
     respond_to do |format|
       if @work.save
+        @car.save
         format.html { redirect_to @work, notice: 'Work was successfully created.' }
         format.json { render :show, status: :created, location: @work }
       else

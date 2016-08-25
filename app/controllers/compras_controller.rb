@@ -15,10 +15,12 @@ class ComprasController < ApplicationController
   # GET /compras/new
   def new
     @compra = Compra.new
+    @boton = "Ingresar compra"
   end
 
   # GET /compras/1/edit
   def edit
+    @boton = "Editar"
   end
 
   # POST /compras

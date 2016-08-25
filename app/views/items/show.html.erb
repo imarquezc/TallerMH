@@ -1,39 +1,46 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="col-md-5">
 
-<p>
-  <strong>Nombre:</strong>
-  <%= @item.nombre %>
-</p>
+  <h1><span id="box" class="glyphicon glyphicon-wrench"></span> Datos Producto</h1>
 
-<p>
-  <strong>Marca:</strong>
-  <%= @item.marca %>
-</p>
+    <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Modelo:</strong>
-  <%= @item.modelo %>
-</p>
+    <p>
+      <strong>Nombre:</strong>
+      <%= @item.nombre %>
+    </p>
 
-<p>
-  <strong>Fabricante:</strong>
-  <%= @item.fabricante %>
-</p>
+    <p>
+      <strong>Marca:</strong>
+      <%= @item.marca %>
+    </p>
 
-<p>
-  <strong>Identificador:</strong>
-  <%= @item.identificador %>
-</p>
+    <p>
+      <strong>Modelo:</strong>
+      <%= @item.modelo %>
+    </p>
 
-<p>
-  <strong>Descripcion:</strong>
-  <%= @item.descripcion %>
-</p>
+    <p>
+      <strong>Fabricante:</strong>
+      <%= @item.fabricante %>
+    </p>
 
-<p>
-  <strong>Stock:</strong>
-  <%= @item.stock %>
-</p>
+    <p>
+      <strong>Identificador:</strong>
+      <%= @item.identificador %>
+    </p>
 
-<%= link_to 'Edit', edit_item_path(@item) %> |
-<%= link_to 'Back', items_path %>
+    <p>
+      <strong>Descripcion:</strong>
+      <%= @item.descripcion %>
+    </p>
+
+    <p>
+      <strong>Stock:</strong>
+      <%= @item.stock %>
+    </p>
+
+    <%= link_to 'Actualizar Datos', edit_item_path(@item), class: "btn btn-lg btn-primary", id:"nuevocliente" %>
+    <%= link_to 'Volver', :back, class: "btn btn-lg btn-danger", id:"nuevocliente"%>
+  </div>
+</div>

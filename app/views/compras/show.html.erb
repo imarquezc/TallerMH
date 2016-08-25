@@ -1,24 +1,33 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="col-md-5">
 
-<p>
-  <strong>Producto:</strong>
-  <%= @compra.producto %>
-</p>
+  <h1><span id="box" class="glyphicon glyphicon-shopping-cart"></span> Detalle de Compra</h1>
 
-<p>
-  <strong>P compra:</strong>
-  <%= @compra.p_compra %>
-</p>
 
-<p>
-  <strong>P venta:</strong>
-  <%= @compra.p_venta %>
-</p>
+    <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Cantidad:</strong>
-  <%= @compra.cantidad %>
-</p>
+    <p>
+      <strong>ID Producto:</strong>
+      <%= @compra.producto %>
+    </p>
 
-<%= link_to 'Edit', edit_compra_path(@compra) %> |
-<%= link_to 'Back', compras_path %>
+    <p>
+      <strong>Precio de Compra:</strong>
+      <%= @compra.p_compra %>
+    </p>
+
+    <p>
+      <strong>Precio de Venta:</strong>
+      <%= @compra.p_venta %>
+    </p>
+
+    <p>
+      <strong>Cantidad:</strong>
+      <%= @compra.cantidad %>
+    </p>
+
+    <h3><%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, @compra, method: :delete, data: { confirm: 'Estas seguro? Se actualizarán los stocks' }, id: "box" %>
+    <%= link_to 'Actualizar Datos', edit_compra_path(@compra), class: "btn btn-lg btn-primary", id:"nuevocliente" %>
+    <%= link_to 'Volver', :back, class: "btn btn-lg btn-danger", id:"nuevocliente"%></h3>
+  </div>
+</div>

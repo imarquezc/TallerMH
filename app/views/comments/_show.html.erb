@@ -1,0 +1,5 @@
+<tr>
+    <td><%= @comment.detalle %></td>
+    <td><%= @comment.precio %></td>
+    <td><%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, @comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+</tr>

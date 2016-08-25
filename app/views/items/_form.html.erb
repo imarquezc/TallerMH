@@ -10,36 +10,52 @@
       </ul>
     </div>
   <% end %>
+  <div class="row">
+    <div class="col-md-12">  
+      <div class="field block">
+        <%= f.label :nombre %><br>
+        <%= f.text_field :nombre, style: "width:25rem;" %>
+      </div>
+      <div class="field block">
+        <%= f.label :identificador %><br>
+        <%= f.text_field :identificador, style: "width:11rem;" %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">      
+      <div class="field block">
+        <%= f.label :marca %><br>
+        <%= f.text_field :marca, style: "width:14rem;" %>
+      </div>
+      <div class="field block">
+        <%= f.label :modelo %><br>
+        <%= f.text_field :modelo, style: "width:22rem;" %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">      
+      <div class="field block">
+        <%= f.label :stock %><br>
+        <%= f.number_field :stock, style: "width:10rem;" %>
+      </div>
+      <div class="field block">
+        <%= f.label :fabricante %><br>
+        <%= f.text_field :fabricante, style: "width:26rem;" %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="field">
+        <%= f.label :descripcion %><br>
+        <%= f.text_area :descripcion, style: "width:36rem;height:6rem;" %>
+      </div>
+    </div>
+  </div>
 
-  <div class="field">
-    <%= f.label :nombre %><br>
-    <%= f.text_field :nombre %>
-  </div>
-  <div class="field">
-    <%= f.label :marca %><br>
-    <%= f.text_field :marca %>
-  </div>
-  <div class="field">
-    <%= f.label :modelo %><br>
-    <%= f.text_field :modelo %>
-  </div>
-  <div class="field">
-    <%= f.label :fabricante %><br>
-    <%= f.text_field :fabricante %>
-  </div>
-  <div class="field">
-    <%= f.label :identificador %><br>
-    <%= f.text_field :identificador %>
-  </div>
-  <div class="field">
-    <%= f.label :descripcion %><br>
-    <%= f.text_field :descripcion %>
-  </div>
-  <div class="field">
-    <%= f.label :stock %><br>
-    <%= f.number_field :stock %>
-  </div>
   <div class="actions">
-    <%= f.submit %>
-  </div>
+    <%= f.submit class: "btn btn-lg btn-success", value: @boton%>
 <% end %>
+

@@ -23,6 +23,10 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 
+gem 'rut_validation'
+
+gem 'wicked_pdf'
+
 gem 'wkhtmltopdf-binary'
 
 # bundle exec rake doc:rails generates the API under doc/api.

@@ -1,33 +1,33 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Compras</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Producto</th>
-      <th>P compra</th>
-      <th>P venta</th>
-      <th>Cantidad</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @compras.each do |compra| %>
+<div class="container">
+  <div class="jumbotron">
+    <div class="container">
+      <div class="col-md-12 col-xs-12">
+        <h1 class=>Clientes</h1>
+        <%= link_to 'Nueva Compra', new_compra_path, class: "btn btn-lg btn-danger new-client", id:"nuevocliente"%>
+      </div>
+    </div>
+  </div>
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= compra.producto %></td>
-        <td><%= compra.p_compra %></td>
-        <td><%= compra.p_venta %></td>
-        <td><%= compra.cantidad %></td>
-        <td><%= link_to 'Show', compra %></td>
-        <td><%= link_to 'Edit', edit_compra_path(compra) %></td>
-        <td><%= link_to 'Destroy', compra, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Producto</th>
+        <th>P compra</th>
+        <th>P venta</th>
+        <th>Cantidad</th>
+        <th colspan="1"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
-
-<%= link_to 'New Compra', new_compra_path %>
+    <tbody>
+      <% @compras.each do |compra| %>
+        <tr class='clickable-row'>
+          <td><%= compra.producto %></td>
+          <td><%= compra.p_compra %></td>
+          <td><%= compra.p_venta %></td>
+          <td><%= compra.cantidad %></td>
+          <td><%= link_to 'Ver', compra %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

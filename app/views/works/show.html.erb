@@ -1,32 +1,31 @@
-
 <div class="container">
-    <div class="col-md-offset-2 col-md-8 col-md-offet-1 col-xs-12" id="workshow">
+    <div class="col-md-offset-2 col-md-8 col-md-offet-1 col-xs-12 col-sm-12" id="workshow">
 
     <center><h1>Orden de Trabajo <%= @work.id %></h1></center>
 
     <br>
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-6 col-xs-12 col-sm-12">
             <h5 id="box"><strong>SR(A):</strong> <%=@client.full_name%></h5>
-            <h5 id="box"><strong>RUT:</strong> <%=@client.full_name%></h5>
+            <h5 id="box"><strong>RUT:</strong> <%=@client.rut%></h5>
             <h5 id="box"><strong>MAIL:</strong> <%=@client.mail%></h5>
             <h5 id="box"><strong>FONO:</strong> <%=number_to_phone(@client.contacto)%></h5>
 
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 col-xs-12 col-sm-12">
             <h5 id="box"><strong>VEHICULO:</strong> <%=@car.full_name%></h5>
             <h5 id="box"><strong>PATENTE:</strong> <%=@car.patente%></h5>
-            <h5 id="box"><strong>AÑO:</strong> [Agregar año!!]</h5>
+            <h5 id="box"><strong>AÑO:</strong> <%=@car.año%></h5>
             <h5 id="box"><strong>COLOR:</strong> <%=@car.color%></h5>
         </div>
-        <div class="col-md-12 no-margin">
+        <div class="col-md-12 no-margin col-sm-12 col-xs-12">
             <h5 id="box"><strong>DIRECCION:</strong> <%=@client.direccion_full%></h5>
         </div>
     </div>
     <div class="row">
         <div class="col-md-6">
             <h5 id="box"><strong>ESTANQUE:</strong>
-            <center><div id="estanque"></div></center></h5>
+            <div style="margin-left: 23%;" id="estanque"></div></h5>
         </div>
         <div class="col-md-6">
             <h5 id="box"><strong>FECHA:</strong> <%= @work.dd_mm_aaaa %> - <%= @work.hh_mm %></h5>
@@ -42,10 +41,56 @@
         </div>
     </div>
 
-    <%= link_to 'Download Pdf', work_path(@work, format: :pdf) %> |
-    <%= link_to 'Back', :back %>
+    <div class="row">
+    <br>
+    <div id="formulario">
+        
+    </div>
+
+        <table class="table" id="comentarios">
+            <thead>
+                <tr>
+                    <th>Item/Trabajo</th>
+                    <th>Precio</th>
+                    <th><%= link_to '<span class="glyphicon glyphicon-plus"></span>'.html_safe, new_comment_path, remote: true, id:"newcomment" %></th>
+                </tr>
+            </thead>
+        <tbody>
+          <% @work.comments.each do |comment| %>
+            <tr>
+              <td><%= comment.detalle %></td>
+              <td><%= comment.precio %></td>
+              <td><%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </tbody>
+        </table>
+        
+    </div>
+
+    <%= link_to 'Download Pdf', work_path(@work, format: :pdf), id:"load" %> |
+    <%= link_to 'Back', car_path(@car) %>
     </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   <script>
  
@@ -65,6 +110,12 @@
   });
  
   </script>
+
+<script>
+  $('#load').click(function(){
+   $('html').html("<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><center><div id=loadingDiv><img src='http://www.animatedimages.org/data/media/67/animated-car-image-0021.gif'/><br/>Generando orden de trabajo, por favor espere...</div></center>"); 
+});
+</script>
 
 <script type="text/javascript">
     $("#estanque").roundSlider({

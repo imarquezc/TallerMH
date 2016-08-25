@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="col-xs-2">
+      <div id="header">
+      <%= image_tag wicked_pdf_asset_base64('logopdf.png') , size: "91x57" %>
+      </div>
+    </div>
+    <div class="col-xs-8">
+
+    <br>
+    <center><h1>Orden de Trabajo <%= @work.id %></h1>
+            <h4><%=@work.tipo%></h4>
+    </center>
+    </div>
+
+    <div class="col-xs-2">
+        
+    </div>
+
+    <div class="col-xs-12">
+    <br>
+    </div>
+
+
+    <div class="row">
+        <div class="col-xs-6">
+            <h5 id="box"><strong>SR(A):</strong> <%=@client.full_name%></h5>
+            <h5 id="box"><strong>RUT:</strong> <%=@client.rut%></h5>
+            <h5 id="box"><strong>MAIL:</strong> <%=@client.mail%></h5>
+            <h5 id="box"><strong>FONO:</strong> <%=number_to_phone(@client.contacto)%></h5>
+        </div>
+        <div class="col-xs-6">
+            <h5 id="box"><strong>VEHICULO:</strong> <%=@car.full_name%></h5>
+            <h5 id="box"><strong>FECHA:</strong> <%= @work.dd_mm_aaaa %> - <%= @work.hh_mm %></h5>
+            <h5 id="box"><strong>ESTANQUE:</strong> <%=@work.estanque*100/12%>%</h5>
+            <h5 id="box"><strong>KILOMETRAJE:</strong> <%= number_with_delimiter(@work.kilometraje, :delimiter => '.') %>km</h5>
+        </div>
+        <div class="col-xs-12 no-margin">
+            <h5 id="box"><strong>DIRECCION:</strong> <%=@client.direccion_full%></h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-4">
+            <h5 id="box"><strong>AÑO:</strong> 2000</h5>
+        </div>
+        <div class="col-xs-4">
+            <h5 id="box"><strong>PATENTE:</strong> <%=@car.patente%></h5>
+        </div>
+        <div class="col-xs-4">
+            <h5 id="box"><strong>COLOR:</strong> <%=@car.color%></h5>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <h5><strong>MOTIVO:</strong></h5>
+            <p id="motivo"><%= @work.motivo %></p>
+            <h5><strong>DETALLE:</strong></h5>
+        </div>
+    </div>
+
+</div>
