@@ -2,7 +2,7 @@
   <div class="jumbotron">
     <div class="container">
       <div class="col-md-12 col-xs-12">
-        <h1 class=>Clientes</h1>
+        <h1 class=>Historial de Compras</h1>
         <%= link_to 'Nueva Compra', new_compra_path, class: "btn btn-lg btn-danger new-client", id:"nuevocliente"%>
       </div>
     </div>
@@ -11,9 +11,10 @@
     <thead>
       <tr>
         <th>Producto</th>
-        <th>P compra</th>
-        <th>P venta</th>
+        <th>Precio de Compra</th>
+        <th>Precio de Venta</th>
         <th>Cantidad</th>
+        <th>Restantes</th>
         <th colspan="1"></th>
       </tr>
     </thead>
@@ -25,6 +26,7 @@
           <td><%= compra.p_compra %></td>
           <td><%= compra.p_venta %></td>
           <td><%= compra.cantidad %></td>
+          <td><%= compra.remaining %></td>
           <td><%= link_to 'Ver', compra %></td>
         </tr>
       <% end %>

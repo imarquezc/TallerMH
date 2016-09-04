@@ -27,7 +27,7 @@ class ComprasController < ApplicationController
   # POST /compras.json
   def create
     @compra = Compra.new(compra_params)
-
+    @compra.remaining = @compra.cantidad
     respond_to do |format|
       if @compra.save
         format.html { redirect_to @compra, notice: 'Compra was successfully created.' }

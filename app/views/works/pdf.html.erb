@@ -57,4 +57,26 @@
         </div>
     </div>
 
+    <table class="table" id="comentarios">
+        <thead>
+            <tr>
+                <th>Item/Trabajo</th>
+                <th class="text-right" style="padding-right:10rem;">Precio</th>
+            </tr>
+        </thead>
+    <tbody>
+      <% @work.comments.sort_by{|e| e[:created_at]}.each do |comment| %>
+        <tr id= <%= comment.id %>>
+          <td><%= comment.detalle %></td>
+          <td class="text-right" style="padding-right:10rem;">$<%= number_with_delimiter(comment.precio, :delimiter => '.') %></td>
+        </tr>
+      <% end %>
+    </tbody>
+    </table>
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class= "total" id="box"><strong>TOTAL:</strong> $<%=number_with_delimiter(@work.calcular_total, :delimiter => '.')%></h3>
+        </div>
+    </div>
+
 </div>

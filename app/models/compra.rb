@@ -3,9 +3,7 @@ class Compra < ActiveRecord::Base
 
     def actualizar_stock
         item = Item.find_by_identificador(self.producto)
-        item.stock += self.cantidad
-        item.save
+        item.actualizar_stock(self.cantidad.to_i)
     end
-
-
+    
 end

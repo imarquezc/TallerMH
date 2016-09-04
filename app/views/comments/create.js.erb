@@ -1,3 +1,4 @@
 $('#formulario').html('');
 $('#newcomment').show();
 $('#comentarios > tbody:last-child').append('<%= j render("show")%>');
+$('.total').html('<strong>TOTAL: </strong>$<%=number_with_delimiter(@work.calcular_total, :delimiter => ".")%>');

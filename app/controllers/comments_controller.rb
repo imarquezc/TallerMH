@@ -16,6 +16,17 @@ class CommentsController < ApplicationController
   def new
     @comment = Comment.new
     @work = params[:id]
+    respond_to do |format|
+        format.js
+    end
+  end
+
+  def new_w_item
+    @comment = Comment.new
+    @work = params[:id]
+    respond_to do |format|
+      format.js
+    end
   end
 
   # GET /comments/1/edit
@@ -24,13 +35,29 @@ class CommentsController < ApplicationController
 
   # POST /comments
   # POST /comments.json
+
+
   def create
-    @comment = Comment.new(comment_params)
     @work = Work.find(params.require(:comment).permit(:work)['work'])
-    @work.comments << @comment
+    if comment_params.has_key?(:producto)
+      @producto = Item.find_by_identificador(comment_params[:producto])
+      if @producto.comprobar_stock(comment_params[:precio])
+        precio = @producto.usar(comment_params[:precio].to_i)
+        @comment = Comment.new
+        @comment.detalle = @producto.nombre
+        @comment.precio = precio
+
+      else
+        @comment = Comment.new
+      end
+
+    else
+      @comment = Comment.new(comment_params)
+    end
 
     respond_to do |format|
       if @comment.save
+        @work.comments << @comment
         format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: @comment }
         format.js
@@ -58,10 +85,11 @@ class CommentsController < ApplicationController
   # DELETE /comments/1
   # DELETE /comments/1.json
   def destroy
+    @work = @comment.work
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to comments_url, notice: 'Comment was successfully destroyed.' }
       format.json { head :no_content }
+      format.js
     end
   end
 
@@ -73,6 +101,6 @@ class CommentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
-      params.require(:comment).permit(:detalle, :precio)
+      params.require(:comment).permit(:detalle, :precio, :producto)
     end
 end

@@ -1,0 +1,2 @@
+$('table#comentarios tr#' + <%= @comment.id %> ).remove();
+$('.total').html('<strong>TOTAL: </strong>$<%=number_with_delimiter(@work.calcular_total, :delimiter => ".")%>');

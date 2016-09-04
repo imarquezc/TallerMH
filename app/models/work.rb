@@ -10,4 +10,12 @@ def hh_mm
     self.created_at.to_formatted_s(:time)
 end
 
+def calcular_total
+    total = 0
+    self.comments.each do |c|
+        total += c.precio
+    end
+    return total
+end
+
 end

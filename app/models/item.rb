@@ -1,9 +1,9 @@
 class Item < ActiveRecord::Base
     validates :nombre, presence: true
-    after_initialize :init
 
-def init
-    self.stock ||= 0 
+def actualizar_stock(n)
+    self.stock = self.stock + n
+    self.save!
 end
 
 def auto_full_name
@@ -15,6 +15,38 @@ def auto_full_name
         self.modelo
     else
         "Uso General"
+    end
+end
+
+def comprobar_stock(n)
+    return self.stock >= n.to_i
+end
+
+def usar(n)
+    if !self.comprobar_stock(n)
+        return false
+    end
+    precio = 0
+    i = 0
+    compras = Compra.where("producto = :ide and remaining > 0",{ide: self.identificador })
+    while n > 0
+        compra = compras[i]
+        if compra.remaining >= n
+            compra.remaining -= n
+            precio += n * compra.p_venta
+            compra.save
+            self.stock -= n
+            self.save
+            return precio
+        else
+            precio += compra.remaining * compra.p_venta
+            n -= compra.remaining
+            self.stock -= compra.remaining
+            self.save
+            compra.remaining = 0
+            compra.save
+            i += 1
+        end
     end
 end
 

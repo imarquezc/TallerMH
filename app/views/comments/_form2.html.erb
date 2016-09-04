@@ -1,0 +1,28 @@
+<%= form_for(@comment, method: 'post', :remote => true) do |f| %>
+  <div id="comment">
+      <div class="col-md-12 container" id="box">
+          <div class="col-md-4">
+            <%= f.label :producto %><br>
+            <select name="comment[producto]" id="comment_producto">
+
+            <% if Item.all == [] %>
+              <option value='nil' disabled>No hay productos</option>
+            <% else %>
+              <% Item.all.each do |i| %>
+                <option value=<%=i.identificador%>><%=i.identificador.to_s + "-" + i.nombre + "-" + i.marca%></option>
+              <% end %>
+            <%end%>
+            </select>
+          </div>
+
+        <div class="col-md-4">
+            <%= f.label :Cantidad %><br>
+            <%= f.number_field :precio %>
+        </div>
+            <%= f.hidden_field :work, :value => @work %><br>
+        <div class="col-md-4">
+            <%= f.submit %>
+        </div>
+      </div>
+  </div>
+<% end %>

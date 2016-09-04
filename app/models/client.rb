@@ -39,7 +39,8 @@ end
 
 def self.search(search)
   if search and search != ""
-    a = where('apellido LIKE ?',"%#{search}%") + where('rut LIKE ?',"%#{search}%")
+    search = search.downcase
+    a = where('LOWER(apellido) LIKE ?',"%#{search}%") + where('rut LIKE ?',"%#{search}%")
     a.uniq
   else
     self.all

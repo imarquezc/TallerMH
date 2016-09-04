@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/clients/:id/new_car' => 'cars#new', as: 'new_car'
   get '/cars/:id/new_work' => 'works#new', as: 'new_work'
   get '/works/:id/new_comment' => 'comments#new', as: 'new_comment'
+  get '/works/:id/new_comment_w_item' => 'comments#new_w_item', as: 'new_comment2'
   resources :comments, except: [:index, :show]
   resources :cars
   resources :works

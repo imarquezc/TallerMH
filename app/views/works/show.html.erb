@@ -46,25 +46,27 @@
     <div id="formulario">
         
     </div>
-
         <table class="table" id="comentarios">
             <thead>
                 <tr>
                     <th>Item/Trabajo</th>
-                    <th>Precio</th>
-                    <th><%= link_to '<span class="glyphicon glyphicon-plus"></span>'.html_safe, new_comment_path, remote: true, id:"newcomment" %></th>
+                    <th class="text-right" style="padding-right: 10rem;">Precio</th>
+                    <th><%= link_to '<span class="glyphicon glyphicon-plus"></span>'.html_safe, new_comment_path, remote: true, id:"newcomment" %> - <%= link_to '<span class="glyphicon glyphicon-plus"></span>'.html_safe, new_comment2_path, remote: true, id:"newcomment" %></th>
                 </tr>
             </thead>
         <tbody>
-          <% @work.comments.each do |comment| %>
-            <tr>
+          <% @work.comments.sort_by{|e| e[:created_at]}.each do |comment| %>
+            <tr id= <%= comment.id %>>
               <td><%= comment.detalle %></td>
-              <td><%= comment.precio %></td>
-              <td><%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td class="text-right" style="padding-right: 10rem;">$<%= number_with_delimiter(comment.precio, :delimiter => '.') %></td>
+              <td><%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, comment, method: :delete, remote: true, data: { confirm: 'Are you sure?' } %></td>
             </tr>
           <% end %>
         </tbody>
         </table>
+        <div class="col-md-12">
+            <h3 class= "total" id="box"><strong>TOTAL: </strong>$<%=number_with_delimiter(@work.calcular_total, :delimiter => '.')%></h3>
+        </div>
         
     </div>
 
@@ -72,24 +74,6 @@
     <%= link_to 'Back', car_path(@car) %>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
   <script>
@@ -113,7 +97,7 @@
 
 <script>
   $('#load').click(function(){
-   $('html').html("<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><center><div id=loadingDiv><img src='http://www.animatedimages.org/data/media/67/animated-car-image-0021.gif'/><br/>Generando orden de trabajo, por favor espere...</div></center>"); 
+   $('html').html("<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><center><div id=loadingDiv><img src=<%= asset_path('car.gif') %> ><br/>Generando orden de trabajo, por favor espere...</div></center>"); 
 });
 </script>
 

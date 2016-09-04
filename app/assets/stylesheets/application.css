@@ -115,6 +115,13 @@
     margin-bottom: -10px;
 }
 
+#gif {
+    background-color: black;
+    height: 30px;
+    width: 30px;
+    color: red;
+}
+
 
 #box {
     border: 1px solid;
