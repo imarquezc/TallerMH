@@ -1,7 +1,8 @@
 <div class="container">
     <div class="col-md-offset-2 col-md-8 col-md-offet-1 col-xs-12 col-sm-12" id="workshow">
 
-    <center><h1>Orden de Trabajo <%= @work.id %></h1></center>
+    <center><h1>Orden de Trabajo <%= @work.id %></h1>
+    <%= link_to 'Descargar en PDF', work_path(@work, format: :pdf), id:"load" %></center>
 
     <br>
     <div class="row">
@@ -69,9 +70,10 @@
         </div>
         
     </div>
-
-    <%= link_to 'Download Pdf', work_path(@work, format: :pdf), id:"load" %> |
-    <%= link_to 'Back', car_path(@car) %>
+    <center>
+    <%= link_to 'Descargar en PDF', work_path(@work, format: :pdf), id:"load",class: "btn btn-lg btn-success" %> 
+    <%= link_to 'Volver', car_path(@car), class: "btn btn btn-lg btn-danger", style: "width:18rem;" %>
+    </center>
     </div>
 </div>
 

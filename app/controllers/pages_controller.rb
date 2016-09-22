@@ -6,4 +6,8 @@ class PagesController < ApplicationController
         end
     render :layout => false
     end
+
+    def index
+        render :layout => false
+    end
 end

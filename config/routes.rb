@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  root 'pages#home'
+  devise_for :users
+  root 'pages#index'
   resources :compras
   resources :items
+  get '/panel' => 'pages#home'
   get '/clients/:id/new_car' => 'cars#new', as: 'new_car'
   get '/cars/:id/new_work' => 'works#new', as: 'new_work'
   get '/works/:id/new_comment' => 'comments#new', as: 'new_comment'
