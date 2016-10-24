@@ -5,11 +5,19 @@
             <%= f.label :producto %><br>
             <select name="comment[producto]" id="comment_producto">
 
+            <% var = 0 %>
+
             <% if Item.all == [] %>
               <option value='nil' disabled>No hay productos</option>
             <% else %>
               <% Item.all.each do |i| %>
-                <option value=<%=i.identificador%>><%=i.identificador.to_s + "-" + i.nombre + "-" + i.marca%></option>
+                <% if i.stock > 0 %>
+                  <option value=<%=i.identificador%>><%=i.identificador.to_s + "-" + i.nombre + "-" + i.marca%></option>
+                  <%var = 1%>
+                <% end %>
+              <% end %>
+              <% if var == 0%>
+                <option value='nil' disabled>No hay Stock de productos</option>
               <% end %>
             <%end%>
             </select>
