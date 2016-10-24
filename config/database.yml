@@ -20,5 +20,5 @@ production:
   encoding: utf8
   database: TallerMM_production
   pool: 5
-  username: <%= ENV['APP_DATABASE_USER'] %>
+  username: rails
   password: <%= ENV['APP_DATABASE_PASSWORD'] %>
