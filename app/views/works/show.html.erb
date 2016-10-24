@@ -52,7 +52,7 @@
                 <tr>
                     <th>Item/Trabajo</th>
                     <th class="text-right" style="padding-right: 10rem;">Precio</th>
-                    <th><%= link_to 'trabajo <span class="glyphicon glyphicon-wrench"></span>'.html_safe, new_comment_path, remote: true, id:"newcomment" %> - <%= link_to 'insumo <span class="glyphicon glyphicon-oil"></span>'.html_safe, new_comment2_path, remote: true, id:"newcomment" %></th>
+                    <th align="right"><%= link_to 'trabajo <span class="glyphicon glyphicon-wrench"></span>'.html_safe, new_comment_path, remote: true, id:"newcomment" %> - <%= link_to 'insumo <span class="glyphicon glyphicon-oil"></span>'.html_safe, new_comment2_path, remote: true, id:"newcomment" %></th>
                 </tr>
             </thead>
         <tbody>
@@ -60,7 +60,7 @@
             <tr id= <%= comment.id %>>
               <td><%= comment.detalle %></td>
               <td class="text-right" style="padding-right: 10rem;">$<%= number_with_delimiter(comment.precio, :delimiter => '.') %></td>
-              <td><%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, comment, method: :delete, remote: true, data: { confirm: 'Are you sure?' } %></td>
+              <td align="right"><%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, comment, method: :delete, remote: true, data: { confirm: 'Are you sure?' } %></td>
             </tr>
           <% end %>
         </tbody>
