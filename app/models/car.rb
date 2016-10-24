@@ -26,6 +26,7 @@ def upper
     self.patente = self.patente.upcase
     self.marca = self.marca.capitalize
     self.modelo = self.modelo.capitalize
+    self.chasis = self.chasis.upcase
 end
 
 end

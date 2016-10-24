@@ -1,9 +1,62 @@
+<style type="text/css">
+    #divisee .actions input{
+        color: white;
+        background: #15CD72;
+        border: 0;
+        font-weight: 500;
+        font-size: 22px;
+        cursor: pointer;
+        box-sizing: border-box;
+        width: 100%;
+        font-family: "proxima-nova", helvetica;
+        margin: 20px auto;
+        margin-left: 0px;
+        margin-right: 0px;
+        padding: 15px;
+        display: block;
+        border-radius: 3px;
+        transition: opacity 0.4s;
+        text-align: center;
+        height: auto;
+    }
+    #devisee .actions {
+        padding: 0px;
+    }
+    h2 {
+        text-align: center;
+    }
+
+    #user_email, #user_password{
+        width: 100%;
+    }
+
+</style>
+
 <!DOCTYPE html>
-<html>
+<html style="background-color:rgb(43,139,220);">
 <head>
     <title>TallerMH</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="initial-scale = 1.0,maximum-scale = 1.0" />
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <%= favicon_link_tag 'favicon.ico' %>
 </head>
-<body>
+
+<body class="col-xs-12" id="divisee" style="margin-top: 15rem;
+border-radius: 4px;
+padding-top: 4rem;
+padding-bottom: 6rem;
+padding-left: 4rem;
+padding-right: 4rem;
+width: 30%;
+margin-left:35%;
+font-family: helvetica;">
+<div>
 <%= yield %>
+</div>
 </body>
+
 </html>

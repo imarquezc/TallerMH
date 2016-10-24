@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160921152447) do
+ActiveRecord::Schema.define(version: 20161020230734) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20160921152447) do
     t.string   "patente"
     t.string   "tipo"
     t.integer  "año"
+    t.string   "chasis"
   end
 
   add_index "cars", ["client_id"], name: "index_cars_on_client_id", using: :btree
@@ -69,7 +70,7 @@ ActiveRecord::Schema.define(version: 20160921152447) do
 
   create_table "items", force: :cascade do |t|
     t.string   "nombre"
-    t.integer  "identificador"
+    t.string   "identificador"
     t.text     "descripcion"
     t.integer  "stock"
     t.datetime "created_at",    null: false

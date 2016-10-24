@@ -13,3 +13,13 @@ test:
   pool: 5
   username: iMarquezc
   password: 123456
+
+production:
+  <<: *default
+  host: localhost
+  adapter: postgresql
+  encoding: utf8
+  database: TallerMM_production
+  pool: 5
+  username: <%= ENV['TALLERMH_DATABASE_USER'] %>
+  password: <%= ENV['TALLERMH_DATABASE_PASSWORD'] %>
