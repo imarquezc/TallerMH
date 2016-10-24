@@ -20,5 +20,5 @@ production:
   encoding: utf8
   database: TallerMM_production
   pool: 5
-  username: <%= ENV['TALLERMH_DATABASE_USER'] %>
-  password: <%= ENV['TALLERMH_DATABASE_PASSWORD'] %>
+  username: <%= ENV['APP_DATABASE_USER'] %>
+  password: <%= ENV['APP_DATABASE_PASSWORD'] %>
