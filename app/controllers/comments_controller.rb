@@ -46,7 +46,7 @@ class CommentsController < ApplicationController
         @comment = Comment.new
         @comment.detalle = @producto.nombre
         @comment.precio = precio
-        @comment.item_id = @producto.identificador
+        @comment.item_id = @producto.id
         @comment.cantidad = comment_params[:precio].to_i
 
       else
@@ -87,7 +87,7 @@ class CommentsController < ApplicationController
   # DELETE /comments/1
   # DELETE /comments/1.json
   def destroy
-    @work = @comment.work
+    @work = @comment.work 
 
     if @comment.item_id?
       compra = Compra.new
