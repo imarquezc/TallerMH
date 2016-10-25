@@ -29,18 +29,18 @@
             <h5 id="box"><strong>FONO:</strong> <%=number_to_phone(@client.contacto)%></h5>
         </div>
         <div class="col-xs-6 col-sm-6 col-md-6">
-            <h5 id="box"><strong>VEHICULO:</strong> <%=@car.full_name%></h5>
+            <h5 id="box"><strong>VEHICULO:</strong> <%=@car.full_name%> - <%=@car.año%></h5>
             <h5 id="box"><strong>FECHA:</strong> <%= @work.dd_mm_aaaa %> - <%= @work.hh_mm %></h5>
             <h5 id="box"><strong>ESTANQUE:</strong> <%=@work.estanque*100/12%>%</h5>
             <h5 id="box"><strong>KILOMETRAJE:</strong> <%= number_with_delimiter(@work.kilometraje, :delimiter => '.') %>km</h5>
         </div>
-        <div class="col-xs-12 no-margin">
+        <div class="col-md-12 no-margin col-sm-12 col-xs-12">
             <h5 id="box"><strong>DIRECCION:</strong> <%=@client.direccion_full%></h5>
         </div>
     </div>
     <div class="row">
         <div class="col-xs-4">
-            <h5 id="box"><strong>AÑO:</strong> 2000</h5>
+            <h5 id="box"><strong>CHASIS:</strong> <%=@car.chasis%></h5>
         </div>
         <div class="col-xs-4">
             <h5 id="box"><strong>PATENTE:</strong> <%=@car.patente%></h5>
