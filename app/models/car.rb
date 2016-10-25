@@ -10,7 +10,7 @@ class Car < ActiveRecord::Base
 
 def self.search(search)
   if search and search != ""
-    where('patente LIKE ?',"%#{search}%")
+    where('patente LIKE ?',"%#{search.upcase}%")
   else
     self.all
   end
