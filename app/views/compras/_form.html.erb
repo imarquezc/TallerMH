@@ -20,7 +20,7 @@
       <option value='nil' disabled>No hay productos</option>
     <% else %>
       <% Item.all.each do |i| %>
-        <option value=<%=i.identificador%>><%=i.identificador.to_s + "-" + i.nombre + "-" + i.marca%></option>
+        <option value=<%=i.id%>><%=i.identificador.to_s + "-" + i.nombre + "-" + i.marca%></option>
       <% end %>
     <%end%>
     </select>
