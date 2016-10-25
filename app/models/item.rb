@@ -28,7 +28,7 @@ def usar(n)
     end
     precio = 0
     i = 0
-    compras = Compra.where("producto = :ide and remaining > 0",{ide: self.identificador })
+    compras = Compra.where("producto = :ide and remaining > 0",{ide: self.id })
     while n > 0
         compra = compras[i]
         if compra.remaining >= n

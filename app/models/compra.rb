@@ -4,6 +4,5 @@ class Compra < ActiveRecord::Base
     def actualizar_stock
         item = Item.find(self.producto)
         item.actualizar_stock(self.cantidad.to_i)
-    end
-    
+    end    
 end
