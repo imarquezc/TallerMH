@@ -4,7 +4,7 @@ class WorksController < ApplicationController
   # GET /works
   # GET /works.json
   def index
-    @works = Work.all
+    @works = Work.all.paginate(:page => params[:page], :per_page => 1)
   end
 
   # GET /works/1

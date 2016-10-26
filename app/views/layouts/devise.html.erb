@@ -26,9 +26,37 @@
         text-align: center;
     }
 
-    #user_email, #user_password{
+    #user_email, #user_password, #user_password_confirmation{
         width: 100%;
     }
+
+    .clase {
+        margin-top: 10rem;
+        border-radius: 4px;
+        padding-top: 4rem;
+        padding-bottom: 6rem;
+        padding-left: 4rem;
+        padding-right: 4rem;
+        width: 34%;
+        margin-left:33%;
+        font-family: helvetica;
+        height: 400px;
+    }
+
+@media (max-width: 500px){
+    .clase {
+        margin-top: 10rem;
+        border-radius: 4px;
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        width: 80%;
+        margin-left:10%;
+        font-family: helvetica;
+    }
+
+}
 
 </style>
 
@@ -45,15 +73,7 @@
   <%= favicon_link_tag 'favicon.ico' %>
 </head>
 
-<body class="col-xs-12" id="divisee" style="margin-top: 15rem;
-border-radius: 4px;
-padding-top: 4rem;
-padding-bottom: 6rem;
-padding-left: 4rem;
-padding-right: 4rem;
-width: 30%;
-margin-left:35%;
-font-family: helvetica;">
+<body class="clase" id="divisee">
 <div>
 <%= yield %>
 </div>

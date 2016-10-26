@@ -31,7 +31,7 @@
           <td><%= link_to car.client.full_name, client_path(car.client) %></td>
           <td><%= car.full_name %></td>
           <td><%= car.año %></td>
-          <td><%= car.kilometraje %></td>
+          <td><%= number_with_delimiter(car.kilometraje, :delimiter => '.')%></td>
           <td><%= car.color %></td>
           <td><%= car.tipo %></td>
           <td><%= link_to 'Ver', car %></td>
@@ -42,7 +42,7 @@
     </tbody>
   </table>
 
-  <center><%= will_paginate @posts %></center>
+  <center><%= will_paginate @cars %></center>
 
 </div>
 

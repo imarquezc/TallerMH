@@ -20,7 +20,7 @@
 
     <p>
       <strong>Kilometraje:</strong>
-      <%= @car.kilometraje %>
+      <%= number_with_delimiter(@car.kilometraje, :delimiter => '.')%> km
     </p>
 
     <p>

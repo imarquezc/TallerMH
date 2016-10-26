@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.search(params[:search])
+    @items = Item.search(params[:search]).paginate(:page => params[:page], :per_page => 15)
   end
 
   # GET /items/1
@@ -30,7 +30,7 @@ class ItemsController < ApplicationController
     @item.stock = 0
     respond_to do |format|
       if @item.save
-        format.html { redirect_to @item, notice: 'Item was successfully created.' }
+        format.html { redirect_to items_path, notice: 'Item was successfully created.' }
         format.json { render :show, status: :created, location: @item }
       else
         format.html { render :new }

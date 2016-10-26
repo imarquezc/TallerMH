@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!, except: [:index]
 
   layout :layout_by_resource
+  require 'will_paginate/array'
 
   protected
 

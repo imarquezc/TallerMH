@@ -4,7 +4,7 @@ class ComprasController < ApplicationController
   # GET /compras
   # GET /compras.json
   def index
-    @compras = Compra.all
+    @compras = Compra.all.paginate(:page => params[:page], :per_page => 15)
   end
 
   # GET /compras/1
@@ -30,7 +30,7 @@ class ComprasController < ApplicationController
     @compra.remaining = @compra.cantidad
     respond_to do |format|
       if @compra.save
-        format.html { redirect_to @compra, notice: 'Compra was successfully created.' }
+        format.html { redirect_to compras_path, notice: 'Compra was successfully created.' }
         format.json { render :show, status: :created, location: @compra }
       else
         format.html { render :new }
