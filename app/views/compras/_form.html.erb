@@ -1,7 +1,7 @@
 <%= form_for(@compra) do |f| %>
   <% if @compra.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@compra.errors.count, "error") %> prohibited this compra from being saved:</h2>
+    <div class="alert alert-danger" id="error_explanation">
+      <h3>No se puede actualizar por el siguiente error:</h3>
 
       <ul>
       <% @compra.errors.full_messages.each do |message| %>
@@ -10,20 +10,25 @@
       </ul>
     </div>
   <% end %>
-
+  <% url = request.original_url %>
 
   <div class="field">
     <%= f.label :producto %><br>
-    <select name="compra[producto]" id="car_producto">
-
-    <% if Item.all == [] %>
-      <option value='nil' disabled>No hay productos</option>
-    <% else %>
-      <% Item.all.each do |i| %>
-        <option value=<%=i.id%>><%=i.identificador.to_s + "-" + i.nombre + "-" + i.marca%></option>
-      <% end %>
-    <%end%>
-    </select>
+      <% if url.include?('edit') %> 
+        <select name="compra[producto]" id="car_producto" disabled="true">
+          <option value='nil' disabled selected="true">No se puede cambiar el producto</option>
+        </select>
+      <% else %>
+        <select name="compra[producto]" id="car_producto">
+        <% if Item.all == [] %>
+          <option value='nil' disabled>No hay productos</option>
+        <% else %>
+          <% Item.all.each do |i| %>
+            <option value=<%=i.id%>><%=i.identificador.to_s + "-" + i.nombre + "-" + i.marca%></option>
+          <% end %>
+        <%end%>
+        </select>
+      <%end%>
   </div>
 
   <div class="field">

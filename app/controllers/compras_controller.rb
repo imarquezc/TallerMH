@@ -4,7 +4,7 @@ class ComprasController < ApplicationController
   # GET /compras
   # GET /compras.json
   def index
-    @compras = Compra.all.paginate(:page => params[:page], :per_page => 15)
+    @compras = Compra.order('compras.created_at DESC').paginate(:page => params[:page], :per_page => 15)
   end
 
   # GET /compras/1
@@ -28,6 +28,7 @@ class ComprasController < ApplicationController
   def create
     @compra = Compra.new(compra_params)
     @compra.remaining = @compra.cantidad
+    @compra.code = Item.find(compra_params[:producto]).identificador
     respond_to do |format|
       if @compra.save
         format.html { redirect_to compras_path, notice: 'Compra was successfully created.' }
@@ -42,8 +43,10 @@ class ComprasController < ApplicationController
   # PATCH/PUT /compras/1
   # PATCH/PUT /compras/1.json
   def update
+    nueva_cantidad = compra_params[:cantidad].to_i
+
     respond_to do |format|
-      if @compra.update(compra_params)
+      if @compra.edit_stock(nueva_cantidad) && @compra.update(compra_params)
         format.html { redirect_to @compra, notice: 'Compra was successfully updated.' }
         format.json { render :show, status: :ok, location: @compra }
       else

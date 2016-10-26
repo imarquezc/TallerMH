@@ -19,7 +19,7 @@
     </thead>
 
     <tbody>
-      <% @clients.each do |client| %>
+      <% @clients.reverse_each do |client| %>
         <tr class='clickable-row' data-href=<%= client_path(client) %>>
           <td><%= client.rut %></td>
           <td><%= client.full_name %></td>

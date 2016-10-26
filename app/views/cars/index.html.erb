@@ -25,7 +25,7 @@
     </thead>
 
     <tbody>
-      <% @cars.each do |car| %>
+      <% @cars.reverse_each do |car| %>
         <tr>
           <td><%= car.patente %></td>
           <td><%= link_to car.client.full_name, client_path(car.client) %></td>

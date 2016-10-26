@@ -22,7 +22,7 @@
     </thead>
 
     <tbody>
-      <% @items.each do |item| %>
+      <% @items.reverse_each do |item| %>
         <tr class='clickable-row'>
           <td><%= item.nombre %></td>
           <td><%= item.auto_full_name %></td>

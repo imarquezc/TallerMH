@@ -51,7 +51,7 @@ private
 
 def validate_mail_telefono_or_celular
     unless[self.mail?, self.telefono?, self.celular?].include?(true)
-        errors.add :base, "Por favor entregue un método de contacto (mail, teléfono y/o celular"
+        errors.add :base, "Por favor entregue un método de contacto (mail, teléfono y/o celular)"
     end
 end
 
