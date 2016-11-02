@@ -43,6 +43,11 @@
     <%= f.label :cantidad %><br>
     <%= f.number_field :cantidad %>
   </div>
-  <div class="actions">
-    <%= f.submit class: "btn btn-lg btn-success", value: @boton%>
+  <% if Item.all == [] %>
+    <div class="actions">
+      <%= f.submit class: "btn btn-lg btn-success", value: @boton, disabled: :true%>
+  <% else %>
+    <div class="actions">
+      <%= f.submit class: "btn btn-lg btn-success", value: @boton%>
+  <%end%>
 <% end %>

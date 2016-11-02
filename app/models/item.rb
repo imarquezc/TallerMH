@@ -1,5 +1,6 @@
 class Item < ActiveRecord::Base
     validates :nombre, presence: true
+    validates :identificador, presence: true
 
 def actualizar_stock(n)
     self.stock = self.stock + n
