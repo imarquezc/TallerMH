@@ -61,7 +61,8 @@
         <thead>
             <tr>
                 <th>Item/Trabajo</th>
-                <th class="text-right" style="padding-right:10rem;">Precio</th>
+                <th class="text-right" style="padding-right: 10rem;">Detalle</th>
+                <th class="text-right" style="padding-right: 10rem;">SubTotal</th>
             </tr>
         </thead>
     <tbody>
@@ -75,7 +76,6 @@
         <% end %>
 
           <td class="text-right" style="padding-right: 10rem;">$<%= number_with_delimiter(comment.precio, :delimiter => '.') %></td>
-          <td align="center"><%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, comment, method: :delete, remote: true, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     </tbody>
