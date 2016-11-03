@@ -68,7 +68,14 @@
       <% @work.comments.sort_by{|e| e[:created_at]}.each do |comment| %>
         <tr id= <%= comment.id %>>
           <td><%= comment.detalle %></td>
-          <td class="text-right" style="padding-right:10rem;">$<%= number_with_delimiter(comment.precio, :delimiter => '.') %></td>
+          <% if comment.cantidad == 1 %>
+            <td class="text-right" style="padding-right: 10rem;"><%=comment.cantidad%>x<%= number_with_delimiter(comment.precio, :delimiter => '.') %></td>
+        <% else %>
+            <td class="text-right" style="padding-right: 10rem;"><%=comment.cantidad%>x<%= number_with_delimiter(comment.precio/comment.cantidad.to_i, :delimiter => '.') %></td>
+        <% end %>
+
+          <td class="text-right" style="padding-right: 10rem;">$<%= number_with_delimiter(comment.precio, :delimiter => '.') %></td>
+          <td align="center"><%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, comment, method: :delete, remote: true, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     </tbody>

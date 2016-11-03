@@ -19,6 +19,14 @@ def auto_full_name
     end
 end
 
+def full_name
+    if self.fabricante?
+        self.nombre + " - " + self.fabricante
+    else
+        self.nombre
+    end
+end
+
 def comprobar_stock(n)
     return self.stock >= n.to_i
 end

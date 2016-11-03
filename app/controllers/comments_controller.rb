@@ -44,7 +44,7 @@ class CommentsController < ApplicationController
       if @producto.comprobar_stock(comment_params[:precio])
         precio = @producto.usar(comment_params[:precio].to_i)
         @comment = Comment.new
-        @comment.detalle = @producto.nombre
+        @comment.detalle = @producto.full_name
         @comment.precio = precio
         @comment.item_id = @producto.id
         @comment.cantidad = comment_params[:precio].to_i
@@ -55,6 +55,7 @@ class CommentsController < ApplicationController
 
     else
       @comment = Comment.new(comment_params)
+      @comment.cantidad = 1
     end
 
     respond_to do |format|
@@ -96,8 +97,11 @@ class CommentsController < ApplicationController
       compra.p_venta = @comment.precio/@comment.cantidad
       compra.cantidad = @comment.cantidad
       compra.remaining = @comment.cantidad
+      compra.code = Item.find(@comment.item_id).identificador
       compra.save
     end
+
+
 
     @comment.destroy
     respond_to do |format|

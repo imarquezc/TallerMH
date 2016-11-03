@@ -51,7 +51,8 @@
             <thead>
                 <tr>
                     <th>Item/Trabajo</th>
-                    <th class="text-right" style="padding-right: 10rem;">Precio</th>
+                    <th class="text-right" style="padding-right: 10rem;">Detalle</th>
+                    <th class="text-right" style="padding-right: 10rem;">SubTotal</th>
                     <th class="text-right"><%= link_to 'trabajo <span class="glyphicon glyphicon-wrench"></span>'.html_safe, new_comment_path, remote: true, id:"newcomment" %> - <%= link_to 'insumo <span class="glyphicon glyphicon-oil"></span>'.html_safe, new_comment2_path, remote: true, id:"newcomment" %></th>
                 </tr>
             </thead>
@@ -59,6 +60,12 @@
           <% @work.comments.sort_by{|e| e[:created_at]}.each do |comment| %>
             <tr id= <%= comment.id %>>
               <td><%= comment.detalle %></td>
+              <% if comment.cantidad == 1 %>
+                <td class="text-right" style="padding-right: 10rem;"><%=comment.cantidad%>x<%= number_with_delimiter(comment.precio, :delimiter => '.') %></td>
+            <% else %>
+                <td class="text-right" style="padding-right: 10rem;"><%=comment.cantidad%>x<%= number_with_delimiter(comment.precio/comment.cantidad.to_i, :delimiter => '.') %></td>
+            <% end %>
+
               <td class="text-right" style="padding-right: 10rem;">$<%= number_with_delimiter(comment.precio, :delimiter => '.') %></td>
               <td align="center"><%= link_to '<span class="glyphicon glyphicon-trash"></span>'.html_safe, comment, method: :delete, remote: true, data: { confirm: 'Are you sure?' } %></td>
             </tr>
